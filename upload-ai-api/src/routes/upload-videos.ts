@@ -9,14 +9,14 @@ import { promisify } from 'node:util'
 
 const pump = promisify(pipeline)
 
-export async function uploadVideoRoute(app: FastifyInstance) {
+export async function uploadVideosRoute(app: FastifyInstance) {
   app.register(fastifyMultipart, {
     limits: {
       fieldSize: 1_048_576 * 25, // 25mb
     } 
   })
 
-  app.post('/video', async (request, reply) => {
+  app.post('/videos', async (request, reply) => {
     const data = await request.file()
 
     if (!data) {

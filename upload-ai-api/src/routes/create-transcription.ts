@@ -1,8 +1,8 @@
-import { FastifyInstance } from 'fastify'
-import { createReadStream } from 'node:fs'
-import { z } from 'zod'
-import { prisma } from '../lib/prisma'
-import { openai } from '../lib/openai'
+import { FastifyInstance } from "fastify";
+import { createReadStream } from "node:fs";
+import { z } from "zod";
+import { prisma } from "../lib/prisma";
+import { openai } from "../lib/openai";
 
 export async function createTranscriptionRoute(app: FastifyInstance) {
   app.post('/videos/:videoId/transcription', async (req) => {
@@ -43,10 +43,12 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
         id: videoId,
       },
       data: {
-        transcription
+        transcription,
       }
     })
 
-    return { transcription }
+    return {
+      transcription,
+    }
   })
 }
